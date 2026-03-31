@@ -1,13 +1,4 @@
-# agents/jobpilot_agent.py
-from langchain.agents import create_agent
+from agents.graphs.jobpilot_graph import build_jobpilot_graph
+from memory.checkpointer import checkpointer
 
-from llm.client import chat_model
-from tools.cv_tools import cv_tools
-
-from llm.prompts import SYSTEM_PROMPT
-
-jobpilot_agent = create_agent(
-    model=chat_model,
-    tools=cv_tools,
-    system_prompt=SYSTEM_PROMPT,
-)
+jobpilot_app = build_jobpilot_graph(checkpointer=checkpointer)
